@@ -4,7 +4,8 @@ import request  from "../../../server/request"
 import "./homeStyle.scss"
 import HeroSection from "../../../components/hero/HeroSection";
 import PopularPostsCard from "../../../components/allCards/popularPostsCard/PopularPostsCard";
-import AllCategoryCard from "../../../components/allCards/allCategoryCard/allCategoryCard";
+import AllCategoryCard from "../../../components/allCards/allCategoryCard/AllCategoryCard";
+
 
 const HomePage = () => {
 
