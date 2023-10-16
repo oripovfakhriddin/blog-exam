@@ -1,0 +1,41 @@
+.all__posts__title{
+  color: #232536;
+  font-family: Sen;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 64px;
+  letter-spacing: -2px;
+  margin-bottom: 32px;
+}
+
+.line{
+  display: block;
+  border-bottom: 1px solid #6D6E76;
+  opacity: 0.32;
+  margin-bottom: 64px;
+}
+.page__list{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 106px 0px;
+  
+}
+
+.page__item{
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  transition: .5s;
+  &:hover{
+    background-color: #6D6E76;
+  }
+}
+
+.page{
+  display: flex;
+}
+.sd{
+  display: flex;
+}
