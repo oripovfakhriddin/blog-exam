@@ -14,6 +14,8 @@
 }
 
 .posts__content__box{
+  display: flex;
+  flex-direction: column;
   max-width: 696px;
   width: 100%;
 }
@@ -57,10 +59,13 @@
 
 
 @media only screen and (max-width: 800px) {
+
   .posts__container{
     flex-direction: column;
   }
+
   .posts__description{
+    max-width: 547px;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;  

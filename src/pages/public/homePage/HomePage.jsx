@@ -45,7 +45,7 @@ const HomePage = () => {
     slidesToShow: 3,
     slidesToScroll: 3,
     autoplay: true,
-    speed: 5000,
+    speed: 10000,
     autoplaySpeed: 2000,
     cssEase: "linear",
     responsive: [
@@ -81,7 +81,7 @@ const HomePage = () => {
     slidesToShow: 4,
     slidesToScroll: 4,
     autoplay: true,
-    speed: 5000,
+    speed: 10000,
     autoplaySpeed: 2000,
     cssEase: "linear",
     responsive: [

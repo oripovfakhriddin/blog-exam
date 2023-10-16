@@ -23,7 +23,7 @@ function App() {
           <Route element = { <FrontLayout /> }>
             <Route path='/' element={ <HomePage /> } />
             <Route path='/blogs' element={ <BlogPage /> } />
-            <Route path='/blogs:/postsId' element={ <BlogPage /> } />
+            <Route path='/blogs:/postsId' element={ <h1>salom</h1> } />
             <Route path='/about' element={ <AboutPage /> } />
             <Route path='/register' element={ <RegisterPage /> } />
             {isAuthenticated && role ==="user" ? <Route path='/myposts' element={ <MyPostsPage /> } /> : null }

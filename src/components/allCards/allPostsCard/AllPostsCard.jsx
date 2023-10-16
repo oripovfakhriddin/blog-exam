@@ -4,7 +4,7 @@ import "./allPostsCardStye.scss"
 import { Link } from "react-router-dom"
 import { ENDPOINT } from "../../../constants"
 
-const AllPostsCard = ({ category, description, photo, title,  }) => {
+const AllPostsCard = ({ category, description, photo, title, _id }) => {
   return (
     <Fragment>
       <div className="container posts__container">
@@ -13,7 +13,7 @@ const AllPostsCard = ({ category, description, photo, title,  }) => {
         </div>
         <div className="posts__content__box">
           <Link className="posts__category__title"> { category?.name } </Link>
-          <h3 className="posts__title">{ title }</h3>
+          <Link to={`/blogs?${_id}`} className="posts__title">{ title }</Link>
           <p className="posts__description"> {description} </p>
         </div>
       </div>
@@ -26,6 +26,7 @@ AllPostsCard.propTypes = {
   description: PropTypes.string,  
   photo: PropTypes.object, 
   title: PropTypes.string, 
+  _id: PropTypes.string
 }
 
 export default AllPostsCard

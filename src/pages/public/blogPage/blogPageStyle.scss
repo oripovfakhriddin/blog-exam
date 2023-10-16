@@ -1,3 +1,9 @@
+.all__posts__header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .all__posts__title{
   color: #232536;
   font-family: Sen;
@@ -7,6 +13,14 @@
   line-height: 64px;
   letter-spacing: -2px;
   margin-bottom: 32px;
+}
+
+.category__select{
+  border: none;
+  padding: 10px 20px;
+  outline: none;
+  border: 1px solid #FFD050;
+  border-radius: 6px;
 }
 
 .line{
@@ -29,13 +43,24 @@
   border-radius: 6px;
   transition: .5s;
   &:hover{
-    background-color: #6D6E76;
+    background-color: #f6d783;
   }
 }
 
-.page{
-  display: flex;
+.active__page{
+  background-color: #FFD050;
 }
-.sd{
-  display: flex;
+.disabled__page{
+  opacity: 0.5;
+  background-color: transparent !important;
+}
+
+
+@media only screen and (max-width: 800px) {
+
+  .paginate__box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
