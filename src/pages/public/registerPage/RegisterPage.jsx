@@ -17,7 +17,7 @@ const RegisterPage = () => {
   const registerFunc = async (data) => {
     try {
       await request.post("auth/register", data)
-      navigate("/myposts")
+      navigate("/login")
       toast.success("Registration succesfuly")
     } catch (err) {
       toast.error("Un successfuly")
