@@ -57,6 +57,44 @@
   overflow: hidden;
 }
 
+.action__box{
+  display: flex;
+  gap: 30px;
+}
+
+.btn{
+  background-color: transparent;
+  border: none;
+  padding: 20px 40px;
+  margin-top: 20px;
+  max-width: 150px;
+  width: 100%;
+  font-size: 20px;
+  border-radius: 10px;
+  color: white;
+  transition: 0.5s;
+}
+
+.btn__edit{
+  background-color: #592EA9;
+  border: 1px solid #592EA9;
+  &:hover{
+    border: 1px solid #592EA9;
+    background-color: white;
+    color: #592EA9;
+  }
+}
+
+.btn__delete{
+  background-color: red;
+  border: 1px solid red;
+  &:hover{
+    border: 1px solid red;
+    background-color: white;
+    color: red;
+  }
+}
+
 
 @media only screen and (max-width: 800px) {
 

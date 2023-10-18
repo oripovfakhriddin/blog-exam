@@ -2,11 +2,11 @@ import { Fragment } from "react";
 import PropTypes from "prop-types";
 import PostsCard from "../allCards/postsCard/postsCard";
 
-const PostsPaginate = ({ data }) => {
+const PostsPaginate = ({ data, deletePost }) => {
   return (
     <Fragment>
-      {data.map((post) => {
-        return <PostsCard key={post._id} {...post} />;
+      {data?.map((post) => {
+        return <PostsCard key={post?._id} {...post} deletePost={deletePost} />;
       })}
     </Fragment>
   );
@@ -14,6 +14,7 @@ const PostsPaginate = ({ data }) => {
 
 PostsPaginate.propTypes = {
   data: PropTypes.array,
+  deletePost: PropTypes.func
 };
 
 export default PostsPaginate;

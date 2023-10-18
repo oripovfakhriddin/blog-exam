@@ -1,10 +1,11 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useCallback, useEffect, useState } from "react";
 import "./myPostsPageStyle.scss";
 import SearchingForm from "../../../components/allForm/searchingForm/SearchingForm";
 import request from "../../../server/request";
 import ReactPaginate from "react-paginate";
 import { LIMIT } from "../../../constants";
 import PostsPaginate from "../../../components/postsPaginate/PostsPaginate";
+import { toast } from "react-toastify";
 
 const MyPostsPage = () => {
   const [userPosts, setUserPosts] = useState([]);
@@ -22,25 +23,26 @@ const MyPostsPage = () => {
 
   let param = JSON.stringify(params);
 
+  const getPosts = useCallback(async () => {
+    try {
+      let {
+        data: { data, pagination },
+      } = await request.get(
+        categoryValue && categoryValue !== "all"
+          ? `post/user?category=${categoryValue}`
+          : "post/user",
+        { params: JSON.parse(param) }
+      );
+      setUserPosts(data);
+      setPaginationData(pagination);
+    } catch (err) {
+      console.log(err);
+    }
+  }, [categoryValue, param]);
+
   useEffect(() => {
-    const getPosts = async () => {
-      try {
-        let {
-          data: { data, pagination },
-        } = await request.get(
-          categoryValue && categoryValue !== "all"
-            ? `post/user?category=${categoryValue}`
-            : "post/user",
-          { params: JSON.parse(param) }
-        );
-        setUserPosts(data);
-        setPaginationData(pagination);
-      } catch (err) {
-        console.log(err);
-      }
-    };
     getPosts();
-  }, [param, categoryValue]);
+  }, [getPosts]);
 
   useEffect(() => {
     const getCategories = async () => {
@@ -66,10 +68,25 @@ const MyPostsPage = () => {
   const handlePageClick = ({ selected }) => {
     setActivePage(selected + 1);
   };
+  
   const selectCategory = (value) => {
     setCategoryValue(value);
     setActivePage(1);
   };
+
+  const deletePost = useCallback(async (id) => {
+    console.log(id);
+    try {
+      await request.delete(`post/${id}`);
+      toast.info("Deleted posts success!");
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
+
+  useEffect(() => {
+    deletePost();
+  }, [deletePost]);
 
   return (
     <Fragment>
@@ -87,7 +104,7 @@ const MyPostsPage = () => {
             >
               <option value="all"> All </option>
               {categoryData?.map((categories, i) => (
-                <option key={i} value={categories._id}>
+                <option key={i} value={categories?._id}>
                   {categories?.name}
                 </option>
               ))}
@@ -100,7 +117,7 @@ const MyPostsPage = () => {
           />
           <div className="container">
             <div className="paginate__box">
-              <PostsPaginate data={userPosts} />
+              <PostsPaginate data={userPosts} deletePost={deletePost} />
               {pageCount > 1 ? (
                 <ReactPaginate
                   breakLabel="..."

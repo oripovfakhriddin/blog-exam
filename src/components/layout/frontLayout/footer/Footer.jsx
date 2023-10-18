@@ -2,11 +2,17 @@ import Facebook from "../../../../assets/icons/facebook-negative.svg";
 import Twitter from "../../../../assets/icons/twitter-negative.svg";
 import Instagram from "../../../../assets/icons/instagram-negative.svg";
 import Linkedin from "../../../../assets/icons/linked-in-negative.svg";
+import AboutIcon from "../../../../assets/icons/about__icon.svg";
+import AccountIcon from "../../../../assets/icons/account__icon.svg";
+import HomeIcon from "../../../../assets/icons/home__icon.svg";
+import PostIcon from "../../../../assets/icons/post__icon.svg";
+import RegIcon from "../../../../assets/icons/reg__icon.svg";
+import LogIcon from "../../../../assets/icons/login__icon.svg";
 
-import "./footerStyle.scss";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../../../context/AuthContext";
+import "./footerStyle.scss";
 
 const Footer = () => {
   const { isAuthenticated } = useContext(AuthContext);
@@ -53,24 +59,38 @@ const Footer = () => {
       <div className="footer__navbar">
         <ul className="nav__list">
           <li className="nav__item">
-            <NavLink to="/">Home</NavLink>
+            <NavLink to="/">
+              <img src={HomeIcon} alt="" />
+              Home
+            </NavLink>
           </li>
           <li className="nav__item">
-            <NavLink to="/blogs">Blog</NavLink>
+            <NavLink to="/blogs">
+              <img src={PostIcon} alt="" />
+              Blog
+            </NavLink>
           </li>
           <li className="nav__item">
-            <NavLink to="/about">About Us</NavLink>
+            <NavLink to="/about">
+              <img src={AboutIcon} alt="" />
+              About Us
+            </NavLink>
           </li>
           <li className="nav__item">
-            <NavLink to="/register">Register</NavLink>
+            <NavLink to="/register">
+              <img src={RegIcon} alt="" />
+              Register
+            </NavLink>
           </li>
-          <li className="nav__item login__item">
+          <li className="nav__item">
             {isAuthenticated ? (
               <NavLink className="login__item__link" to="/account">
+                <img src={AccountIcon} alt="" />
                 Account
               </NavLink>
             ) : (
               <NavLink className="login__item__link" to="/login">
+                <img src={LogIcon} alt="" />
                 Login
               </NavLink>
             )}

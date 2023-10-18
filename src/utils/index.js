@@ -1,7 +1,7 @@
 import { ENDPOINT } from "../constants";
 
 export const getCatePostImage = (photo) => {
-  let img = `${ENDPOINT}/upload/${photo?._id}.${photo?.name?.split(".")[1]}`;
+  let img = `${ENDPOINT}upload/${photo?._id}.${photo?.name?.split(".")[1]}`;
   return img;
 };
 

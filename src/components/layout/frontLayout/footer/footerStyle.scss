@@ -8,6 +8,7 @@ footer{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 50px;
 }
 
 .footer__left__box{
@@ -39,10 +40,44 @@ footer{
 
 .footer__navbar{
   display: none;
+  width: 100%;
 }
 
 @media only screen and (max-width: 700px) { 
+
+  .nav__list{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .active{
+      color: aqua;
+    }
+  }
+
+  .footer__container{
+    flex-direction: column-reverse;
+    padding-bottom: 60px;
+  }
+
+  .nav__item{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    img{
+      width: 40px;
+      height: 40px;
+    }
+      a{
+      padding: 20px;
+  }
+}
+
+
   .footer__navbar{
+    background-color: red;
+    padding: 20px 20px;
     display: block;
     position: fixed;
     bottom: 0;
