@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import PropTypes from "prop-types";
-import PostsCard from "../allCards/postsCard/postsCard";
+import PostsCard from "../allCards/postsCard/PostsCard";
 
 const PostsPaginate = ({ data, deletePost }) => {
   return (
