@@ -36,7 +36,7 @@ const MyPostsPage = () => {
       setUserPosts(data);
       setPaginationData(pagination);
     } catch (err) {
-      console.log(err);
+      toast.error(err.response.data)
     }
   }, [categoryValue, param]);
 
@@ -52,7 +52,7 @@ const MyPostsPage = () => {
         } = await request.get("category");
         setCategoryData(data);
       } catch (err) {
-        console.log(err);
+        toast.error(err.response.data)
       }
     };
     getCategories();
@@ -75,12 +75,11 @@ const MyPostsPage = () => {
   };
 
   const deletePost = useCallback(async (id) => {
-    console.log(id);
     try {
       await request.delete(`post/${id}`);
       toast.info("Deleted posts success!");
     } catch (err) {
-      console.log(err);
+      toast.error(err.response.data)
     }
   }, []);
 

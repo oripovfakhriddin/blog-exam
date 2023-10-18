@@ -33,21 +33,25 @@
   display: flex;
   justify-content: center;
   gap: 20px;
-  margin: 106px 0px;
+  margin: 100px 0px;
   
 }
-
 .page__item{
+  border-radius: 6px !important;
+}
+
+.page__item a{
   cursor: pointer;
-  padding: 8px;
-  border-radius: 6px;
+  padding: 12px 20px !important;
   transition: .5s;
   &:hover{
+    border-radius: 6px !important;
     background-color: #f6d783;
   }
 }
 
 .active__page{
+  border-radius: 6px !important;
   background-color: #FFD050;
 }
 .disabled__page{

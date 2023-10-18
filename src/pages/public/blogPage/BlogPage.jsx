@@ -5,6 +5,7 @@ import ReactPaginate from "react-paginate";
 import AllPostsPaginate from "../../../components/allPostsPaginate/AllPostsPaginate";
 import request from "../../../server/request";
 import { LIMIT } from "../../../constants";
+import { toast } from "react-toastify";
 
 const BlogPage = () => {
   const [allPosts, setAllPosts] = useState([]);
@@ -36,7 +37,7 @@ const BlogPage = () => {
         setAllPosts(data);
         setPaginationData(pagination);
       } catch (err) {
-        console.log(err);
+        toast.error(err.response.data)
       }
     };
     getPosts();
@@ -50,7 +51,7 @@ const BlogPage = () => {
         } = await request.get("category");
         setCategoryData(data);
       } catch (err) {
-        console.log(err);
+        toast.error(err.response.data)
       }
     };
     getCategories();

@@ -7,7 +7,7 @@ import { getCatePostImage } from "../../../utils";
 const AllCategoryCard = ({ name, _id, description, photo }) => {
   return (
     <Fragment>
-      <NavLink to={`${_id}`} className="category__card__box">
+      <NavLink to={`/category/${_id}`} className="category__card__box">
         <div className="category__card__img__box">
           <img
             src={

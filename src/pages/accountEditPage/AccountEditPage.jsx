@@ -42,7 +42,7 @@ const AccountEditPage = () => {
       await request.put("auth/upload", formData)
       getUser()
     } catch (err) {
-      console.log(err);
+      toast.error(err.response.data)
     }
   }
 
