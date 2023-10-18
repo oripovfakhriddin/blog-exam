@@ -1,10 +1,10 @@
 import { Fragment } from "react";
 import PropTypes from "prop-types";
-import "./allPostsCardStye.scss";
+import "./postsCard.scss";
 import { Link } from "react-router-dom";
 import { ENDPOINT } from "../../../constants";
 
-const AllPostsCard = ({ category, description, photo, title, _id }) => {
+const PostsCard = ({ category, description, photo, title, _id }) => {
   return (
     <Fragment>
       <div className="container posts__container">
@@ -23,7 +23,7 @@ const AllPostsCard = ({ category, description, photo, title, _id }) => {
   );
 };
 
-AllPostsCard.propTypes = {
+PostsCard.propTypes = {
   category: PropTypes.object,
   description: PropTypes.string,
   photo: PropTypes.object,
@@ -31,4 +31,4 @@ AllPostsCard.propTypes = {
   _id: PropTypes.string,
 };
 
-export default AllPostsCard;
+export default PostsCard;

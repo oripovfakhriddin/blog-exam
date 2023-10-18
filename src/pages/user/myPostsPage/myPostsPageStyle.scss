@@ -1,0 +1,26 @@
+.header__box{
+  margin-top: 20px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h2{
+    font-size: 40px;
+  }
+
+  .open__modal__btn{
+    font-size: 20px;
+    border: none;
+    background-color: #FFD050;
+    border: 1px solid #FFD050;
+    padding: 20px 40px;
+    border-radius: 10px;
+    transition: 0.5s;
+    &:hover{
+      border: 1px solid #FFD050;
+      background-color: white;
+      color: #171616;
+    }
+  }
+}

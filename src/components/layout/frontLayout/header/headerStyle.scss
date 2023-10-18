@@ -50,3 +50,14 @@ header{
     line-height: 24px;
   }
 }
+
+@media only screen and (max-width: 700px) {
+  .nav{
+    display: none;
+  }
+  .site__logo__box{
+    align-items: center;
+    margin: 0 auto;
+  }
+
+}

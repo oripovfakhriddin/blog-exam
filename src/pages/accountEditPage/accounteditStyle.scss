@@ -1,0 +1,163 @@
+#user__edit{
+  margin-top: 30px;
+}
+
+.react-tabs__tab-list{
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  column-gap: 40px;
+  border-bottom: none !important;
+  .react-tabs__tab{
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+    background-color: rgb(178, 245, 245);
+  }
+  .react-tabs__tab--selected{
+    background-color: aqua;
+  }
+}
+
+
+form{
+  label{
+    display: block;
+    margin-bottom: 5px;
+  }
+  .form__box{
+    display: flex;
+    gap: 20px;
+  }
+  .edit__btn__box{
+    text-align: center;
+  }
+
+  .edit__btn{
+    margin-bottom: 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    height: 50px;
+    transition: 0.5s;
+    border: none;
+    background-color: #FFD050;
+    padding: 10px 40px;
+    border: 1px solid #FFD050;
+    &:hover{
+      color: #FFD050;
+      border: 1px solid #FFD050;
+      background-color: white;
+    }
+  }
+}
+
+.upload__image__box{
+  h2{
+    margin: 5px 0px;
+  }
+  input{
+    margin-bottom: 20px;
+  }
+  div{
+    height: 400px;
+    max-width: 400px;
+  }
+}
+
+.upload__info__box{
+  max-width: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 20px;
+  div{
+    width: 100%;
+  }
+
+  .user__info__input{
+    outline: none;
+    background-color: transparent;
+    border: 1px solid #FFD050;
+    border-radius: 6px;
+    padding: 10px;
+    height: 50px;
+    width: 100%;
+  }
+}
+
+
+
+.change__password__box{
+  form{
+    max-width: 500px;
+    margin:  0 auto;
+    text-align: center;
+    div{
+      margin-bottom: 40px;
+    }
+    label{
+      text-align: start;
+      margin-bottom: 10px;
+    }
+    input{
+      border-radius: 10px;
+      outline: none;
+      padding: 10px 10px;
+      width: 100%;
+      margin-bottom: 5px;
+      border: 1px solid #FFD050;
+    }
+    p{
+      text-align: start;
+    }
+    button{
+      border: 1px solid #FFD050;
+      color: #FFD050;
+      padding: 10px 20px;
+      width: 100%;
+      background-color: transparent;
+      font-size: 20px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      transition: 0.5s;
+      &:hover{
+        color: #151414;
+        background-color: #FFD050;
+        border: 1px solid #FFD050;
+      }
+    }
+  }
+}
+
+
+@media only screen and (max-width: 890px) {
+
+  .upload__image__box{
+    text-align: center;
+    div{
+      display: flex;
+      justify-content: center;
+      margin: 0 auto; 
+    }
+  }
+
+  .form__box{
+    flex-direction: column;
+  }
+
+  .edit__btn__box{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    button{
+      width: 100%;
+    }
+  }
+}
+
+
+@media only screen and (max-width: 500px) {
+  .upload__info__box{
+    grid-template-columns: 1fr;
+  }
+}

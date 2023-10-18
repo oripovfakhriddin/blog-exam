@@ -13,7 +13,7 @@ const FrontLayout = () => {
       </main>
       <Footer />
     </Fragment>
-  )
-}
+  );
+};
 
-export default FrontLayout
+export default FrontLayout;

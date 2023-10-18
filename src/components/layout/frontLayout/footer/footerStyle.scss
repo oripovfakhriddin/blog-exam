@@ -36,3 +36,16 @@ footer{
   display: flex;
   gap: 26.67px;
 }
+
+.footer__navbar{
+  display: none;
+}
+
+@media only screen and (max-width: 700px) { 
+  .footer__navbar{
+    display: block;
+    position: fixed;
+    bottom: 0;
+    margin: 0 auto;
+  }
+}

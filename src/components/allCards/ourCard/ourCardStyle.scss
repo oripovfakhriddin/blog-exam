@@ -21,6 +21,10 @@
   margin-bottom: 16px;
   max-width: 401px;
   width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
 }
 
 .our__text{
@@ -31,4 +35,15 @@
   font-weight: 400;
   line-height: 28px;
   max-width: 480px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+
+@media only screen and (max-width: 800px) {
+  .our__text, .our__title, .our__content{
+    max-width: 100%;
+  }
 }

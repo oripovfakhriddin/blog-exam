@@ -1,6 +1,6 @@
 #our{
-  margin-top: 50px;
   margin-bottom: 120px;
+  background-color: #F4F0F8;
 } 
 
 #our__team{
@@ -8,7 +8,6 @@
 }
 
 .our__box{
-  background-color: #F4F0F8;
   display: flex;
   gap: 54px;
   padding: 83px 108px 109px 86px;
@@ -37,6 +36,7 @@
   margin-bottom: 16px;
   max-width: 520px;
   width: 100%;
+  transition: 0.5s;
 }
 
 .text{
@@ -49,6 +49,7 @@
   margin-bottom: 16px;
   max-width: 520px;
   width: 100%;
+  transition: 0.5s;
 }
 .content{
   color: #232536;
@@ -59,4 +60,53 @@
   line-height: 28px;
   max-width: 520px;
   width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+
+@media only screen and (max-width: 800px) {
+  .our__box{
+    text-align: center;
+    flex-direction: column;
+    gap: 50px;
+    padding: 33px 58px 59px 36px;
+  }
+
+  .our__team__container__firts{
+    padding: 20px;
+    margin-bottom: 60px;
+    flex-direction: column-reverse;
+    gap: 40px;
+  }
+
+  .our__team__container__second{
+    padding: 20px;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .title, .content, .text{
+    max-width: 100%;
+  }
+  .title{
+    text-align: center;
+  }
+  
+}
+
+@media only screen and (max-width: 500px) {
+  .title{
+    text-align: center;
+    font-size: 28px;
+  }
+  .text{
+    font-size: 18px;
+  }
+  .content{
+    font-size: 14px;
+  }
 }

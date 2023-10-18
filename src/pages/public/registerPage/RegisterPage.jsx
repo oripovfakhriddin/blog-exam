@@ -1,9 +1,7 @@
-import "./registerStyle.scss"
+import "./registerStyle.scss";
 
 const RegisterPage = () => {
-  return (
-    <div>RegisterPage</div>
-  )
-}
+  return <div>RegisterPage</div>;
+};
 
-export default RegisterPage
+export default RegisterPage;
