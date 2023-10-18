@@ -4,8 +4,9 @@ import request from "../../../server/request";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { getCatePostImage } from "../../../utils";
 import { trueDate } from "../../../constants";
-import User from "../../../assets/icons/user.png"
-import "./postpage.scss"
+import User from "../../../assets/icons/user.png";
+import "./postpage.scss";
+
 const PostPage = () => {
   let { postsId } = useParams();
   const [data, setdata] = useState(null);
@@ -22,7 +23,11 @@ const PostPage = () => {
     <Fragment>
       <div className="container">
         <div className="post-content">
-          <LazyLoadImage className="post-image"  effect="blur" src={getCatePostImage(data?.photo)} />
+          <LazyLoadImage
+            className="post-image"
+            effect="blur"
+            src={getCatePostImage(data?.photo)}
+          />
         </div>
         <div>
           <div className="container-md post-text">
