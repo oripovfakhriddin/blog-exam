@@ -12,7 +12,7 @@ import NotFoundPage from "./pages/public/notFoundPage/NotFoundPage";
 import HomePage from "./pages/public/homePage/HomePage";
 import { AuthContext } from "./context/AuthContext";
 import AccountEditPage from "./pages/accountEditPage/AccountEditPage";
-import CategoryPage from "./pages/public/categoryPage/categoryPage";
+import CategoryPage  from "./pages/public/categoryPage/CategoryPage"
 
 function App() {
   const { role, isAuthenticated } = useContext(AuthContext);
