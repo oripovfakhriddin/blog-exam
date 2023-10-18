@@ -4,7 +4,14 @@ import "./postsCard.scss";
 import { Link } from "react-router-dom";
 import { getCatePostImage } from "../../../utils";
 
-const PostsCard = ({ category, description, photo, title, _id, deletePost}) => {
+const PostsCard = ({
+  category,
+  description,
+  photo,
+  title,
+  _id,
+  deletePost,
+}) => {
   return (
     <Fragment>
       <div className="container posts__container">
@@ -13,13 +20,20 @@ const PostsCard = ({ category, description, photo, title, _id, deletePost}) => {
         </div>
         <div className="posts__content__box">
           <Link className="posts__category__title"> {category?.name} </Link>
-          <Link to={`/blogs?${_id}`} className="posts__title">
+          <Link to={`/blogs/${_id}`} className="posts__title">
             {title}
           </Link>
           <p className="posts__description"> {description} </p>
-          <div className="action__box" >
+          <div className="action__box">
             <button className="btn btn__edit">Edit</button>
-            <button onClick={()=>{deletePost(_id)}} className="btn btn__delete">Delete</button>
+            <button
+              onClick={() => {
+                deletePost(_id);
+              }}
+              className="btn btn__delete"
+            >
+              Delete
+            </button>
           </div>
         </div>
       </div>
@@ -33,7 +47,7 @@ PostsCard.propTypes = {
   photo: PropTypes.object,
   title: PropTypes.string,
   _id: PropTypes.string,
-  deletePost: PropTypes.func
+  deletePost: PropTypes.func,
 };
 
 export default PostsCard;

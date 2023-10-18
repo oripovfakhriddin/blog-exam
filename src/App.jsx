@@ -13,6 +13,7 @@ import HomePage from "./pages/public/homePage/HomePage";
 import { AuthContext } from "./context/AuthContext";
 import AccountEditPage from "./pages/accountEditPage/AccountEditPage";
 import CategoryPage  from "./pages/public/categoryPage/CategoryPage"
+import PostPage from "./pages/public/postPage/postPage";
 
 function App() {
   const { role, isAuthenticated } = useContext(AuthContext);
@@ -25,7 +26,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/category/:categoryId" element={<CategoryPage />} />
             <Route path="/blogs" element={<BlogPage />} />
-            <Route path="/blogs:/postsId" element={<h1>salom</h1>} />
+            <Route path="/blogs/:postsId" element={ <PostPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/register" element={<RegisterPage />} />
             {isAuthenticated ? (

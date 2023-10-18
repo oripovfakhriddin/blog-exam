@@ -6,6 +6,8 @@ import ReactPaginate from "react-paginate";
 import { LIMIT } from "../../../constants";
 import PostsPaginate from "../../../components/postsPaginate/PostsPaginate";
 import { toast } from "react-toastify";
+import Modal from "../../../components/modal/Modal";
+
 
 const MyPostsPage = () => {
   const [userPosts, setUserPosts] = useState([]);
@@ -14,12 +16,14 @@ const MyPostsPage = () => {
   const [searchValue, setSearchValue] = useState("");
   const [categoryValue, setCategoryValue] = useState("");
   const [categoryData, setCategoryData] = useState([]);
+  const [modal, setModal] = useState(false);
 
   let params = {
     page: activePage,
     limit: LIMIT,
     search: searchValue,
   };
+  
 
   let param = JSON.stringify(params);
 
@@ -36,7 +40,7 @@ const MyPostsPage = () => {
       setUserPosts(data);
       setPaginationData(pagination);
     } catch (err) {
-      toast.error(err.response.data)
+      toast.error(err.response.data);
     }
   }, [categoryValue, param]);
 
@@ -52,7 +56,7 @@ const MyPostsPage = () => {
         } = await request.get("category");
         setCategoryData(data);
       } catch (err) {
-        toast.error(err.response.data)
+        toast.error(err.response.data);
       }
     };
     getCategories();
@@ -68,24 +72,24 @@ const MyPostsPage = () => {
   const handlePageClick = ({ selected }) => {
     setActivePage(selected + 1);
   };
-  
+
   const selectCategory = (value) => {
     setCategoryValue(value);
     setActivePage(1);
   };
 
   const deletePost = useCallback(async (id) => {
-    try {
       await request.delete(`post/${id}`);
       toast.info("Deleted posts success!");
-    } catch (err) {
-      toast.error(err.response.data)
-    }
   }, []);
 
   useEffect(() => {
     deletePost();
   }, [deletePost]);
+
+  const toggleModal = () => {
+    setModal(!modal);
+  };
 
   return (
     <Fragment>
@@ -108,7 +112,7 @@ const MyPostsPage = () => {
                 </option>
               ))}
             </select>
-            <button className="open__modal__btn">Add post</button>
+            <button onClick={toggleModal} className="open__modal__btn">Add post</button>
           </div>
           <SearchingForm
             searchValue={searchValue}
@@ -137,6 +141,7 @@ const MyPostsPage = () => {
             </div>
           </div>
         </div>
+        <Modal toggleModal={toggleModal} categoryData = {categoryData} modal={modal} />
       </section>
     </Fragment>
   );

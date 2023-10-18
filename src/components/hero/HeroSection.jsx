@@ -27,7 +27,7 @@ const HeroSection = ({ data }) => {
             | {trueDate(createdAt)}{" "}
           </p>
           <p className="hero__text">{description}</p>
-          <NavLink to={`blogs? ${_id}`} className="hero__btn">
+          <NavLink to={`/blogs/${_id}`} className="hero__btn">
             Read more
           </NavLink>
         </div>

@@ -1,0 +1,79 @@
+body.active-modal {
+  overflow-y: hidden;
+}
+
+.btn-modal {
+  padding: 10px 20px;
+  display: block;
+  margin: 100px auto 0;
+  font-size: 18px;
+}
+
+.modal, .overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.overlay {
+  background: rgba(49,49,49,0.8);
+}
+.modal-content {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: #f1f1f1;
+  padding: 14px 28px;
+  border-radius: 3px;
+  max-width: 600px;
+  min-width: 300px;
+  .modal__title{
+    text-align: center;
+  }
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 7px;
+}
+
+.modal-content{
+  form{
+    max-width: 500px !important;
+    width: 100% !important;
+    label{
+      text-align: start;
+    }
+    input{
+      width: 100%;
+      padding: 10px;
+    }
+    .image{
+      padding: 10px ;
+    }
+    select{
+      padding: 10px;
+      width: 50%;
+      option{
+        padding: 10px;
+      }
+    }
+    button{
+      outline: none;
+      width: 100%;
+      padding: 10px;
+      color: #FFF;
+      font-size: 20px;
+      background-color: green;
+      border-radius: 10px;
+    }
+  }
+}

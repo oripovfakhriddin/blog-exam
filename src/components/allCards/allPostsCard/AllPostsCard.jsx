@@ -2,7 +2,6 @@ import { Fragment } from "react";
 import PropTypes from "prop-types";
 import "./allPostsCardStye.scss";
 import { Link } from "react-router-dom";
-import { ENDPOINT } from "../../../constants";
 import { getCatePostImage } from "../../../utils";
 
 const AllPostsCard = ({ category, description, photo, title, _id }) => {
@@ -14,7 +13,7 @@ const AllPostsCard = ({ category, description, photo, title, _id }) => {
         </div>
         <div className="posts__content__box">
           <Link className="posts__category__title"> {category?.name} </Link>
-          <Link to={`/blogs?${_id}`} className="posts__title">
+          <Link to={`/blogs/${_id}`} className="posts__title">
             {title}
           </Link>
           <p className="posts__description"> {description} </p>
