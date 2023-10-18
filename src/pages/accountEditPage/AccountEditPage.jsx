@@ -35,9 +35,16 @@ const AccountEditPage = () => {
     reset({ ...newUser });
   }, [user?.photo, reset, user]);
 
-  // function handleChange(e) {
-  //   setFile(URL.createObjectURL(e.target.files[0]));
-  // }
+  const handleChange = async (e) => {
+    try {
+      let formData= new FormData();
+      formData.append("file", e.file.originFileObj);
+      await request.put("auth/upload", formData)
+      getUser()
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   const handleSubmitForm = async (data) => {
     await request.put("auth/details", data);
@@ -75,7 +82,7 @@ const AccountEditPage = () => {
                 <div className="form__box">
                   <div className="upload__image__box">
                     <h2>Add Image:</h2>
-                    <input type="file" />
+                    <input onChange={handleChange} type="file" />
                     <div>
                       <img
                         src={
@@ -233,7 +240,7 @@ const AccountEditPage = () => {
                       </p>
                     ) : null}
                   </div>
-                  <button>Save Password</button>
+                  <button type="submit">Save Password</button>
                 </form>
               </div>
             </TabPanel>

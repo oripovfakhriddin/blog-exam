@@ -1,0 +1,43 @@
+.register__password__box{
+  form{
+    max-width: 500px;
+    margin: 40px auto;
+    text-align: center;
+    div{
+      margin-bottom: 40px;
+    }
+    label{
+      margin-top: 20px;
+      text-align: start;
+      margin-bottom: 10px;
+    }
+    input{
+      border-radius: 10px;
+      outline: none;
+      padding: 20px 10px;
+      width: 100%;
+      margin-bottom: 5px;
+      border: 1px solid #FFD050;
+    }
+    p{
+      text-align: start;
+    }
+    button{
+      margin-top: 50px;
+      border: 1px solid #FFD050;
+      color: #FFD050;
+      padding: 10px 20px;
+      width: 100%;
+      background-color: transparent;
+      font-size: 20px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      transition: 0.5s;
+      &:hover{
+        color: #151414;
+        background-color: #FFD050;
+        border: 1px solid #FFD050;
+      }
+    }
+  }
+}

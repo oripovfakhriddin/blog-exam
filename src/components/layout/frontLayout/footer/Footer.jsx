@@ -73,7 +73,7 @@ const Footer = () => {
           <li className="nav__item">
             <NavLink to="/about">
               <img src={AboutIcon} alt="" />
-              About Us
+              About
             </NavLink>
           </li>
           <li className="nav__item">
