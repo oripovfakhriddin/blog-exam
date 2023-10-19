@@ -8,7 +8,6 @@ footer{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 50px;
 }
 
 .footer__left__box{
@@ -43,15 +42,27 @@ footer{
   width: 100%;
 }
 
-@media only screen and (max-width: 700px) { 
+@media only screen and (max-width: 750px) { 
+
+  .login__item__link{
+    width: 71px;
+    padding: 8px 4px;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+  }
 
   .nav__list{
+    padding-left: 20px;
+    padding-right: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 0px;
     .active{
-      color: aqua;
+      border-radius: 15px;
+      color: rgb(248, 248, 248);
+      background-color: red;
     }
   }
 
@@ -61,26 +72,39 @@ footer{
   }
 
   .nav__item{
-    display: flex;
-    flex-direction: column;
     text-align: center;
-    align-items: center;
     img{
       width: 40px;
       height: 40px;
     }
-      a{
-      padding: 20px;
-  }
 }
 
 
   .footer__navbar{
-    background-color: red;
-    padding: 20px 20px;
+    background-color: rgb(93, 87, 87);
     display: block;
     position: fixed;
     bottom: 0;
     margin: 0 auto;
   }
 }
+
+@media only screen and (max-width: 400px) { 
+  .nav__list{
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  .login__item__link{
+    width: 61px;
+    img{
+      width: 32px;
+      height: 32px;
+    }
+    span{
+      font-size: 12px;
+    }
+  }
+}
+
+

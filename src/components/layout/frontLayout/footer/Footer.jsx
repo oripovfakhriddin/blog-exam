@@ -59,39 +59,39 @@ const Footer = () => {
       <div className="footer__navbar">
         <ul className="nav__list">
           <li className="nav__item">
-            <NavLink to="/">
+            <NavLink className="login__item__link" to="/">
               <img src={HomeIcon} alt="" />
-              Home
+              <span>Home</span>
             </NavLink>
           </li>
           <li className="nav__item">
-            <NavLink to="/blogs">
+            <NavLink className="login__item__link" to="/blogs">
               <img src={PostIcon} alt="" />
-              Blog
+              <span>Blog</span>
             </NavLink>
           </li>
           <li className="nav__item">
-            <NavLink to="/about">
+            <NavLink className="login__item__link" to="/about">
               <img src={AboutIcon} alt="" />
-              About
+              <span>About</span>
             </NavLink>
           </li>
           <li className="nav__item">
-            <NavLink to="/register">
+            <NavLink className="login__item__link" to="/register">
               <img src={RegIcon} alt="" />
-              Register
+              <span>Register</span>
             </NavLink>
           </li>
           <li className="nav__item">
             {isAuthenticated ? (
               <NavLink className="login__item__link" to="/account">
                 <img src={AccountIcon} alt="" />
-                Account
+                <span>Account</span>
               </NavLink>
             ) : (
               <NavLink className="login__item__link" to="/login">
                 <img src={LogIcon} alt="" />
-                Login
+                <span>Login</span>
               </NavLink>
             )}
           </li>
