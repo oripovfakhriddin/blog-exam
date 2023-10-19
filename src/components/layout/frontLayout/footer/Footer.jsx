@@ -20,15 +20,15 @@ const Footer = () => {
     <footer>
       <div className="container footer__container">
         <div className="footer__left__box">
-          <p>Finstreet 118 2561 Fintown</p>
+          <p>Yunusobod tumani, Shahriston mahallasi</p>
           <div>
             <a
               className="email__link"
               href="mailto: fakhriddinoripov0731@gmail.com"
             >
-              Hello@finsweet.com
+              fakhriddinoripov0731@gmail.com
             </a>
-            <a href="tel: +998 90 6949416"> 020 7993 2905 </a>
+            <a href="tel: +998 90 6949416"> +998 90 6949416 </a>
           </div>
         </div>
         <div className="footer__right__box">

@@ -69,6 +69,15 @@ footer{
   .footer__container{
     flex-direction: column-reverse;
     padding-bottom: 60px;
+    gap: 20px;
+    text-align: center;
+
+    .footer__item{
+      a img{
+        width: 24px;
+        height: 24px;
+      }
+    }
   }
 
   .nav__item{

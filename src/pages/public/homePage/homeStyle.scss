@@ -42,9 +42,11 @@
   margin-bottom: 71px;
 }
 
-// .slick-slide{
-//   margin-right: 20px !important;
-// }
+.category__container{
+  .slick-slide{
+    margin-right: 20px !important;
+  }
+}
 
 .slick-prev, .slick-next {
   display: none !important;
