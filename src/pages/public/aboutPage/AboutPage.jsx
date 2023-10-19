@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+
 import OurCard from "../../../components/allCards/ourCard/OurCard";
 
 import FirstImage from "../../../assets/images/about_icon.png";

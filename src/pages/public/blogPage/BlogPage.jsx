@@ -1,11 +1,14 @@
 import { Fragment, useEffect, useState } from "react";
-import "./blogPageStyle.scss";
-import SearchingForm from "../../../components/allForm/searchingForm/SearchingForm";
 import ReactPaginate from "react-paginate";
+import { toast } from "react-toastify";
+
+import SearchingForm from "../../../components/allForm/searchingForm/SearchingForm";
 import AllPostsPaginate from "../../../components/allPostsPaginate/AllPostsPaginate";
+
 import request from "../../../server/request";
 import { LIMIT } from "../../../constants";
-import { toast } from "react-toastify";
+
+import "./blogPageStyle.scss";
 
 const BlogPage = () => {
   const [allPosts, setAllPosts] = useState([]);
@@ -37,7 +40,7 @@ const BlogPage = () => {
         setAllPosts(data);
         setPaginationData(pagination);
       } catch (err) {
-        toast.error(err.response.data)
+        toast.error(err.response.data);
       }
     };
     getPosts();
@@ -51,7 +54,7 @@ const BlogPage = () => {
         } = await request.get("category");
         setCategoryData(data);
       } catch (err) {
-        toast.error(err.response.data)
+        toast.error(err.response.data);
       }
     };
     getCategories();

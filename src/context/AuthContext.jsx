@@ -1,7 +1,8 @@
 import { Fragment, createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { ROLE, TOKEN } from "../constants";
 import Cookies from "js-cookie";
+
+import { ROLE, TOKEN } from "../constants";
 import request from "../server/request";
 
 export const AuthContext = createContext();
@@ -10,9 +11,9 @@ const AuthContextProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(
     Boolean(Cookies.get(TOKEN))
   );
-  const [role, setRole] = useState(localStorage.getItem(ROLE));
   const [user, setUser] = useState(null);
   const [userLoading, setUserLoading] = useState(false);
+  const [role, setRole] = useState(localStorage.getItem(ROLE));
 
   const getUser = async () => {
     setUserLoading(true);

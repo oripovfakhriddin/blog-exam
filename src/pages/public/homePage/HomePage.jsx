@@ -1,10 +1,13 @@
 import { Fragment, useEffect, useState } from "react";
 import Slider from "react-slick";
+
 import request from "../../../server/request";
-import "./homeStyle.scss";
+
 import HeroSection from "../../../components/hero/HeroSection";
 import PopularPostsCard from "../../../components/allCards/popularPostsCard/PopularPostsCard";
 import AllCategoryCard from "../../../components/allCards/allCategoryCard/AllCategoryCard";
+
+import "./homeStyle.scss";
 
 const HomePage = () => {
   const [singleData, setSingleData] = useState({});
@@ -44,6 +47,7 @@ const HomePage = () => {
     speed: 10000,
     autoplaySpeed: 2000,
     cssEase: "linear",
+    pauseOnHover: true,
     responsive: [
       {
         breakpoint: 1024,
@@ -80,6 +84,8 @@ const HomePage = () => {
     speed: 10000,
     autoplaySpeed: 2000,
     cssEase: "linear",
+    focusOnSelect: true,
+    pauseOnHover: true,
     responsive: [
       {
         breakpoint: 1024,

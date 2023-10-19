@@ -1,11 +1,13 @@
-import { useParams } from "react-router-dom";
-import "./categoryPage.scss";
 import { Fragment, useCallback, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import ReactPaginate from "react-paginate";
+
 import request from "../../../server/request";
+
 import SearchingForm from "../../../components/allForm/searchingForm/SearchingForm";
 import AllPostsPaginate from "../../../components/allPostsPaginate/AllPostsPaginate";
-import { LIMIT } from "../../../constants";
-import ReactPaginate from "react-paginate";
+
+import "./categoryPage.scss";
 
 const CategoryPage = () => {
   const [allPosts, setAllPosts] = useState([]);
@@ -25,7 +27,6 @@ const CategoryPage = () => {
     } = await request.get("post");
     setAllPosts(data);
   }, []);
-
 
   useEffect(() => {
     getData();

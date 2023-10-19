@@ -1,14 +1,17 @@
 import { Fragment, useContext } from "react";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import "./loginStyle.scss";
-import loginSchema from "../../../schema/loginSchema";
 import { useNavigate } from "react-router-dom";
-import request from "../../../server/request";
-import { toast } from "react-toastify";
-import { AuthContext } from "../../../context/AuthContext";
+import { useForm } from "react-hook-form";
 import Cookies from "js-cookie";
+import { toast } from "react-toastify";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+import { AuthContext } from "../../../context/AuthContext";
+
+import request from "../../../server/request";
 import { ROLE, TOKEN } from "../../../constants";
+import loginSchema from "../../../schema/loginSchema";
+
+import "./loginStyle.scss";
 
 const LoginPage = () => {
   const { setRole, setIsAuthenticated } = useContext(AuthContext);

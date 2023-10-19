@@ -1,13 +1,15 @@
 import { Fragment, useCallback, useEffect, useState } from "react";
-import "./myPostsPageStyle.scss";
-import SearchingForm from "../../../components/allForm/searchingForm/SearchingForm";
-import request from "../../../server/request";
 import ReactPaginate from "react-paginate";
-import { LIMIT } from "../../../constants";
-import PostsPaginate from "../../../components/postsPaginate/PostsPaginate";
 import { toast } from "react-toastify";
-import Modal from "../../../components/modal/Modal";
 
+import request from "../../../server/request";
+import { LIMIT } from "../../../constants";
+
+import Modal from "../../../components/modal/Modal";
+import PostsPaginate from "../../../components/postsPaginate/PostsPaginate";
+import SearchingForm from "../../../components/allForm/searchingForm/SearchingForm";
+
+import "./myPostsPageStyle.scss";
 
 const MyPostsPage = () => {
   const [userPosts, setUserPosts] = useState([]);
@@ -23,7 +25,6 @@ const MyPostsPage = () => {
     limit: LIMIT,
     search: searchValue,
   };
-  
 
   let param = JSON.stringify(params);
 
@@ -79,8 +80,8 @@ const MyPostsPage = () => {
   };
 
   const deletePost = useCallback(async (id) => {
-      await request.delete(`post/${id}`);
-      toast.info("Deleted posts success!");
+    await request.delete(`post/${id}`);
+    toast.info("Deleted posts success!");
   }, []);
 
   useEffect(() => {
@@ -112,7 +113,9 @@ const MyPostsPage = () => {
                 </option>
               ))}
             </select>
-            <button onClick={toggleModal} className="open__modal__btn">Add post</button>
+            <button onClick={toggleModal} className="open__modal__btn">
+              Add post
+            </button>
           </div>
           <SearchingForm
             searchValue={searchValue}
@@ -141,7 +144,11 @@ const MyPostsPage = () => {
             </div>
           </div>
         </div>
-        <Modal toggleModal={toggleModal} categoryData = {categoryData} modal={modal} />
+        <Modal
+          toggleModal={toggleModal}
+          categoryData={categoryData}
+          modal={modal}
+        />
       </section>
     </Fragment>
   );

@@ -1,11 +1,13 @@
 import { Fragment, useContext } from "react";
-import "./accountPageStyle.scss";
+import { NavLink, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
 import { AuthContext } from "../../context/AuthContext";
 import getUserImage from "../../utils";
 import { ROLE, TOKEN, trueDate } from "../../constants";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import Cookies from "js-cookie";
-import { NavLink, useNavigate } from "react-router-dom";
+
+import "./accountPageStyle.scss";
 
 const AccountPage = () => {
   const { user, userLoading, setIsAuthenticated, setRole } =

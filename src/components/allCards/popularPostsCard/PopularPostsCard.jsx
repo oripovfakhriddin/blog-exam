@@ -15,7 +15,7 @@ const PopularPostsCard = ({
 }) => {
   return (
     <Fragment>
-      <NavLink to={`blogs?${_id}`} className="card__box">
+      <NavLink to={`blogs/${_id}`} className="card__box">
         <div className="card__img__box">
           <img src={getCatePostImage(photo)} alt="" />
         </div>

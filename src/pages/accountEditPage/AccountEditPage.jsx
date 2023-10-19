@@ -1,15 +1,17 @@
 import { Fragment, useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../context/AuthContext";
-import "./accounteditStyle.scss";
-import getUserImage from "../../utils";
-import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import editUserSchema from "../../schema/editUserSchema";
-import request from "../../server/request";
-import { useNavigate } from "react-router-dom";
+import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import { toast } from "react-toastify";
+
+import request from "../../server/request";
+import { AuthContext } from "../../context/AuthContext";
 import editUserPasswordSchema from "../../schema/editUserPasswordSchema";
+import editUserSchema from "../../schema/editUserSchema";
+import getUserImage from "../../utils";
+
+import "./accounteditStyle.scss";
 
 const AccountEditPage = () => {
   const navigate = useNavigate();
@@ -37,14 +39,14 @@ const AccountEditPage = () => {
 
   const handleChange = async (e) => {
     try {
-      let formData= new FormData();
+      let formData = new FormData();
       formData.append("file", e.file.originFileObj);
-      await request.put("auth/upload", formData)
-      getUser()
+      await request.put("auth/upload", formData);
+      getUser();
     } catch (err) {
-      toast.error(err.response.data)
+      toast.error(err.response.data);
     }
-  }
+  };
 
   const handleSubmitForm = async (data) => {
     await request.put("auth/details", data);
@@ -58,12 +60,12 @@ const AccountEditPage = () => {
       if (data.confirmPassword === data.newPassword) {
         await request.put("auth/password", data);
         toast.success("Password edit successfuly");
-        navigate("/account")
+        navigate("/account");
       } else {
         toast.error("New password !== Confirm Password");
       }
     } catch (err) {
-      toast.error(err.response.data)
+      toast.error(err.response.data);
     }
   };
 

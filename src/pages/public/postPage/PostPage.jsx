@@ -1,10 +1,13 @@
 import { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import request from "../../../server/request";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { getCatePostImage } from "../../../utils";
+
 import { trueDate } from "../../../constants";
+import { getCatePostImage } from "../../../utils";
+import request from "../../../server/request";
+
 import User from "../../../assets/icons/user.png";
+
 import "./postpage.scss";
 
 const PostPage = () => {

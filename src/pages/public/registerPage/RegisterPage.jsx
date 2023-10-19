@@ -1,11 +1,13 @@
 import { Fragment } from "react";
-import "./registerStyle.scss";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { toast } from "react-toastify";
+
 import registerSchema from "../../../schema/registerSchema";
 import request from "../../../server/request";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+
+import "./registerStyle.scss";
 
 const RegisterPage = () => {
   const {
@@ -13,14 +15,14 @@ const RegisterPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(registerSchema) });
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const registerFunc = async (data) => {
     try {
-      await request.post("auth/register", data)
-      navigate("/login")
-      toast.success("Registration succesfuly")
+      await request.post("auth/register", data);
+      navigate("/login");
+      toast.success("Registration succesfuly");
     } catch (err) {
-      toast.error("Un successfuly")
+      toast.error("Un successfuly");
     }
   };
 
