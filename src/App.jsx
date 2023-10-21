@@ -14,6 +14,10 @@ import { AuthContext } from "./context/AuthContext";
 import AccountEditPage from "./pages/accountEditPage/AccountEditPage";
 import CategoryPage from "./pages/public/categoryPage/CategoryPage";
 import PostPage from "./pages/public/postPage/PostPage";
+import AdminLayout from "./components/layout/adminLayout/AdminLayout";
+import UsersPage from "./pages/admin/usersPage/UsersPage";
+import CategoriesPage from "./pages/admin/categoriesPage/CategoriesPage";
+import PostsPage from "./pages/admin/postsPage/PostsPage";
 
 function App() {
   const { role, isAuthenticated } = useContext(AuthContext);
@@ -39,10 +43,15 @@ function App() {
             {isAuthenticated ? (
               <Route path="/account/edit" element={<AccountEditPage />} />
             ) : null}
-            {isAuthenticated && role === "admin" ? (
-              <Route path="/dashboard" element={<DashboardPage />} />
-            ) : null}
           </Route>
+          {isAuthenticated && role === "admin" ? (
+            <Route element={<AdminLayout />}>
+              <Route path="/dashboard" element={<DashboardPage />} />
+              <Route path="/users" element={<UsersPage />} />
+              <Route path="/categories" element={<CategoriesPage />} />
+              <Route path="/posts" element={<PostsPage />} />
+            </Route>
+          ) : null}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>

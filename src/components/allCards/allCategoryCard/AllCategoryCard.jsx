@@ -9,13 +9,7 @@ const AllCategoryCard = ({ name, _id, description, photo }) => {
     <Fragment>
       <NavLink to={`/category/${_id}`} className="category__card__box">
         <div className="category__card__img__box">
-          <img
-            src={
-              getCatePostImage(photo) &&
-              "https://static.thenounproject.com/png/1194689-200.png"
-            }
-            alt={name}
-          />
+          <img src={getCatePostImage(photo)} alt={name} />
         </div>
         <div className="category__content__box">
           <h2 className="category__card__title">{name}</h2>

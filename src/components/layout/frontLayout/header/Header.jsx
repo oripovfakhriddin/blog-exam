@@ -3,9 +3,15 @@ import SiteLogo from "../../../../assets/icons/site-logo.svg";
 import "./headerStyle.scss";
 import { useContext } from "react";
 import { AuthContext } from "../../../../context/AuthContext";
+import changeLanguage from "../../../../redux/actions/language";
+import { useDispatch, useSelector } from "react-redux";
 
 const Header = () => {
   const { isAuthenticated } = useContext(AuthContext);
+  const dispatch = useDispatch();
+  const { language: lang, languageType } = useSelector(
+    (state) => state.language
+  );
 
   return (
     <header>
@@ -13,7 +19,7 @@ const Header = () => {
         <div className="site__logo__box">
           {isAuthenticated ? (
             <NavLink to="/myposts">
-              <h2 className="my__posts__title">My Blogs</h2>
+              <h2 className="my__posts__title">{lang.myBlogs}</h2>
             </NavLink>
           ) : (
             <NavLink to="/">
@@ -24,27 +30,41 @@ const Header = () => {
         <nav className="nav">
           <ul className="nav__list">
             <li className="nav__item">
-              <NavLink to="/">Home</NavLink>
+              <NavLink to="/">{lang.home}</NavLink>
             </li>
             <li className="nav__item">
-              <NavLink to="/blogs">Blog</NavLink>
+              <NavLink to="/blogs">{lang.blogs}</NavLink>
             </li>
             <li className="nav__item">
-              <NavLink to="/about">About Us</NavLink>
+              <NavLink to="/about">{lang.about}</NavLink>
             </li>
             <li className="nav__item">
-              <NavLink to="/register">Register</NavLink>
+              <NavLink to="/register">{lang.register}</NavLink>
             </li>
             <li className="nav__item login__item">
               {isAuthenticated ? (
                 <NavLink className="login__item__link" to="/account">
-                  Account
+                  {lang.account}
                 </NavLink>
               ) : (
                 <NavLink className="login__item__link" to="/login">
-                  Login
+                  {lang.login}
                 </NavLink>
               )}
+            </li>
+            <li>
+              <select
+                value={languageType}
+                onChange={(e) => {
+                  dispatch(changeLanguage(e.target.value));
+                }}
+                name="language"
+                id="lang"
+                className="language__select"
+              >
+                <option value="en">EN</option>
+                <option value="uz">UZ</option>
+              </select>
             </li>
           </ul>
         </nav>

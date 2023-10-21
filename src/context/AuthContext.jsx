@@ -26,6 +26,14 @@ const AuthContextProvider = ({ children }) => {
     isAuthenticated && getUser();
   }, [isAuthenticated]);
 
+  const logOutFunc = (navigate) => {
+    Cookies.remove(TOKEN);
+    localStorage.removeItem(ROLE);
+    setIsAuthenticated(false);
+    setRole(null);
+    navigate("/");
+  };
+
   const state = {
     isAuthenticated,
     role,
@@ -34,7 +42,9 @@ const AuthContextProvider = ({ children }) => {
     setIsAuthenticated,
     setRole,
     getUser,
+    logOutFunc,
   };
+
   return (
     <Fragment>
       <AuthContext.Provider value={state}>{children}</AuthContext.Provider>

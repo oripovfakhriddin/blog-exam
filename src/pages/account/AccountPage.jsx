@@ -1,26 +1,16 @@
 import { Fragment, useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import { AuthContext } from "../../context/AuthContext";
 import getUserImage from "../../utils";
-import { ROLE, TOKEN, trueDate } from "../../constants";
 
 import "./accountPageStyle.scss";
+import { trueDate } from "../../constants";
 
 const AccountPage = () => {
-  const { user, userLoading, setIsAuthenticated, setRole } =
-    useContext(AuthContext);
+  const { user, userLoading, logOutFunc } = useContext(AuthContext);
   const navigate = useNavigate();
-
-  const logOutFunc = () => {
-    Cookies.remove(TOKEN);
-    localStorage.removeItem(ROLE);
-    setIsAuthenticated(false);
-    setRole(null);
-    navigate("/");
-  };
 
   return (
     <Fragment>
@@ -76,7 +66,12 @@ const AccountPage = () => {
               <NavLink className="edit__user__btn" to="/account/edit">
                 Edit
               </NavLink>
-              <button className="delete__user__btn" onClick={logOutFunc}>
+              <button
+                className="delete__user__btn"
+                onClick={() => {
+                  logOutFunc(navigate);
+                }}
+              >
                 Log out{" "}
               </button>
             </div>
