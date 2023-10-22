@@ -9,6 +9,7 @@ import {
 } from "../types/posts";
 
 export const getPosts = (page = 1, search = "") => {
+  console.log(page);
   return async (dispatch) => {
     try {
       dispatch({ type: POSTS_LOADING, payload: true });
@@ -29,17 +30,17 @@ export const getPosts = (page = 1, search = "") => {
   };
 };
 
+export const changePage = (page) => {
+  return (dispatch) => {
+    dispatch({ type: POSTS_PAGE, payload: page });
+    dispatch(getPosts(page));
+  };
+};
+
 export const searchPosts = (search) => {
   return (dispatch) => {
     dispatch({ type: POSTS_SEARCH, payload: search });
     dispatch({ type: POSTS_PAGE, payload: 1 });
     dispatch(getPosts(1, search));
-  };
-};
-
-export const changePage = (page) => {
-  return (dispatch) => {
-    dispatch({ type: POSTS_PAGE, payload: page });
-    dispatch(getPosts(page));
   };
 };

@@ -24,6 +24,7 @@ const categoryReducer = (state = initialState, { type, payload }) => {
     case CATEGORY_TOTAL:
       return { ...state, total: payload };
     case CATEGORY_PAGE:
+      console.log(payload);
       return { ...state, activePage: payload };
     case CATEGORY_SEARCH:
       return { ...state, search: payload };

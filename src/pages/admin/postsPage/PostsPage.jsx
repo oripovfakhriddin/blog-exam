@@ -35,6 +35,21 @@ const PostsPage = () => {
       key: "title",
     },
     {
+      title: "Created BY",
+      dataIndex: "user",
+      key: "user",
+      render: (data) => (
+        <Fragment>
+          <p>
+            {data?.first_name} {data?.last_name}
+          </p>
+          <p>
+            Role: <span style={{ color: "red" }}>{data?.role}</span>
+          </p>
+        </Fragment>
+      ),
+    },
+    {
       title: "Category",
       dataIndex: "category",
       key: "category",
@@ -57,7 +72,7 @@ const PostsPage = () => {
             <Button type="primary" danger>
               Delete
             </Button>
-            <Link to={`/blogs /${data}`} type="primary">
+            <Link to={`/blogs/${data}`} type="primary">
               More
             </Link>
           </Space>
@@ -91,9 +106,7 @@ const PostsPage = () => {
           total={total}
           current={activePage}
           pageSize={LIMIT_POSTS}
-          onChange={(page) => {
-            changePage(page);
-          }}
+          onChange={(page) => dispatch(changePage(page))}
         />
       ) : null}
     </Fragment>

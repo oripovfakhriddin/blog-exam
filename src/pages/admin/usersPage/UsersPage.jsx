@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import "./userspage.scss";
 import { LIMIT_USERS } from "../../../constants";
-import { Button, Flex, Image, Input, Pagination, Space, Table } from "antd";
+import { Button, Flex,  Input, Pagination, Space, Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {
@@ -9,7 +9,6 @@ import {
   getUsers,
   searchUsers,
 } from "../../../redux/actions/users";
-import getUserImage from "../../../utils";
 import { Link } from "react-router-dom";
 
 const UsersPage = () => {
@@ -21,13 +20,11 @@ const UsersPage = () => {
     dispatch(getUsers());
   }, [dispatch]);
 
-
   const columns = [
     {
-      title: "Image",
-      dataIndex: "photo",
-      key: "photo",
-      render: (data) => <Image height={50} src={getUserImage(data)} />,
+      title: "Username",
+      dataIndex: "username",
+      key: "username",
     },
     {
       title: "Full name",

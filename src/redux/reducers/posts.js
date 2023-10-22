@@ -16,21 +16,16 @@ const initialState = {
 
 export const postsReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case POSTS_LOADING: {
+    case POSTS_LOADING:
       return { ...state, loading: payload };
-    }
-    case POSTS_FETCHING: {
+    case POSTS_FETCHING:
       return { ...state, posts: payload };
-    }
-    case POSTS_TOTAL: {
+    case POSTS_TOTAL:
       return { ...state, total: payload };
-    }
-    case POSTS_PAGE: {
+    case POSTS_PAGE:
       return { ...state, activePage: payload };
-    }
-    case POSTS_SEARCH: {
+    case POSTS_SEARCH:
       return { ...state, search: payload };
-    }
   }
   return state;
 };
