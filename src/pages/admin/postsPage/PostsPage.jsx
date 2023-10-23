@@ -123,7 +123,7 @@ const PostsPage = () => {
               onClick={() => {
                 Modal.confirm({
                   title: "Do you want to delete this posts?",
-                  onOk: () => dispatch(deletePosts(data, activePage)),
+                  onOk: () => dispatch(deletePosts(data, search)),
                 });
               }}
               type="primary"
