@@ -19,13 +19,17 @@ import { LIMIT_POSTS } from "../../../constants";
 import {
   changePage,
   controlModal,
+  deletePosts,
+  editPosts,
   getPosts,
   searchPosts,
+  sendPosts,
   showModal,
   uploadImage,
 } from "../../../redux/actions/posts";
 import { getCatePostImage } from "../../../utils";
 import { Link } from "react-router-dom";
+import { getCategories } from "../../../redux/actions/categories";
 const PostsPage = () => {
   const dispatch = useDispatch();
   const {
@@ -39,9 +43,11 @@ const PostsPage = () => {
     isModalOpen,
     imageData,
     selected,
+    postsCategories,
   } = useSelector((state) => state.posts);
-
+  const { categories } = useSelector((state) => state.categories);
   useEffect(() => {
+    dispatch(getCategories());
     dispatch(getPosts());
   }, [dispatch]);
 
@@ -49,7 +55,8 @@ const PostsPage = () => {
 
   const handleOk = async () => {
     const values = await form.validateFields();
-    values.photo = imageData;
+    values.photo = imageData?._id;
+    dispatch(sendPosts(values, form, selected, search, activePage));
   };
 
   const closeModal = () => {
@@ -104,8 +111,24 @@ const PostsPage = () => {
       render: (data) => {
         return (
           <Space size="middle">
-            <Button type="primary">Edit</Button>
-            <Button type="primary" danger>
+            <Button
+              onClick={() => {
+                dispatch(editPosts(form, data));
+              }}
+              type="primary"
+            >
+              Edit
+            </Button>
+            <Button
+              onClick={() => {
+                Modal.confirm({
+                  title: "Do you want to delete this posts?",
+                  onOk: () => dispatch(deletePosts(data, activePage)),
+                });
+              }}
+              type="primary"
+              danger
+            >
               Delete
             </Button>
             <Link to={`/blogs/${data}`} type="primary">
@@ -244,9 +267,15 @@ const PostsPage = () => {
             <Input.TextArea />
           </Form.Item>
 
-          <Form.Item label="Select">
-            <Select>
-              <Select.Option value="demo">Demo</Select.Option>
+          <Form.Item name="category" label="Select">
+            <Select value={postsCategories}>
+              {categories?.map((category) => {
+                return (
+                  <Select.Option key={category._id} value={category._id}>
+                    {category?.name}
+                  </Select.Option>
+                );
+              })}
             </Select>
           </Form.Item>
         </Form>

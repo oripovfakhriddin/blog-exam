@@ -97,7 +97,7 @@ export const uploadImage = (file) => {
       const formData = new FormData();
       formData.append("file", file);
       const { data } = await request.post("upload", formData);
-      console.log(data);
+      dispatch(updateStateChange({ imageData: data }));
     } finally {
       dispatch(updateStateChange({ imageLoading: false }));
     }
@@ -116,5 +116,39 @@ export const showModal = (form) => {
 export const controlModal = (payload) => {
   return async (dispatch) => {
     dispatch(updateStateChange({ isModalOpen: payload }));
+  };
+};
+
+export const sendPosts = (values, form, selected, search, activePage) => {
+  return async (dispatch) => {
+    try {
+      dispatch(updateStateChange({ isModalLoading: true }));
+      selected === null
+        ? await request.post("post", values)
+        : await request.put(`post/${selected}`, values);
+      dispatch(updateStateChange({ isModalOpen: false, imageData: null }));
+      dispatch(getPosts(activePage, search));
+      form.resetFields();
+    } finally {
+      dispatch(updateStateChange({ isModalLoading: false }));
+    }
+  };
+};
+
+export const editPosts = (form, id) => {
+  return async (dispatch) => {
+    dispatch(updateStateChange({ isModalOpen: true, selected: id }));
+    const { data } = await request.get(`post/${id}`);
+    dispatch(updateStateChange({ postsCategories: data?.category?._id }));
+    dispatch(updateStateChange({ imageData: data?.photo }));
+    form.setFieldsValue(data);
+  };
+};
+
+export const deletePosts = (id, search) => {
+  return async (dispatch) => {
+    await request.delete(`post/${id}`);
+    dispatch(getPosts(1, search));
+    dispatch(updateStateChange({ activePage: 1 }));
   };
 };

@@ -38,6 +38,7 @@
 import { CATEGORY_ACTIONS } from "../types/categories";
 
 const initialState = {
+  allCategories: [],
   categories: [],
   total: 0,
   activePage: 1,

@@ -45,6 +45,7 @@ const initialState = {
   imageLoading: false,
   imageData: null,
   selected: null,
+  postsCategories: null,
 };
 
 export const postsReducer = (state = initialState, { type, payload }) => {

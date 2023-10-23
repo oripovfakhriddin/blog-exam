@@ -8,4 +8,3 @@
 //*** OPTIMAL ***//
 
 export const CATEGORY_ACTIONS = "category-actions";
-

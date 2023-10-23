@@ -54,6 +54,7 @@ const updateStateChange = (payload) => {
   return { type: CATEGORY_ACTIONS, payload };
 };
 
+
 export const getCategories = (page = 1, search = "") => {
   return async (dispatch) => {
     try {
