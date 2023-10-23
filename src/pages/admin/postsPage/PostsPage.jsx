@@ -1,24 +1,60 @@
 import { Fragment, useEffect } from "react";
 import "./postspage.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Flex, Image, Input, Pagination, Space, Table } from "antd";
+import {
+  Button,
+  Flex,
+  Form,
+  Image,
+  Input,
+  Modal,
+  Pagination,
+  Select,
+  Space,
+  Table,
+  Upload,
+} from "antd";
+import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import { LIMIT_POSTS } from "../../../constants";
 import {
   changePage,
+  controlModal,
   getPosts,
   searchPosts,
+  showModal,
+  uploadImage,
 } from "../../../redux/actions/posts";
 import { getCatePostImage } from "../../../utils";
 import { Link } from "react-router-dom";
 const PostsPage = () => {
   const dispatch = useDispatch();
-  const { posts, loading, total, activePage, search } = useSelector(
-    (state) => state.posts
-  );
+  const {
+    posts,
+    loading,
+    total,
+    activePage,
+    search,
+    imageLoading,
+    isModalLoading,
+    isModalOpen,
+    imageData,
+    selected,
+  } = useSelector((state) => state.posts);
 
   useEffect(() => {
     dispatch(getPosts());
   }, [dispatch]);
+
+  const [form] = Form.useForm();
+
+  const handleOk = async () => {
+    const values = await form.validateFields();
+    values.photo = imageData;
+  };
+
+  const closeModal = () => {
+    dispatch(controlModal(false));
+  };
 
   const columns = [
     {
@@ -93,7 +129,14 @@ const PostsPage = () => {
               style={{ width: "auto", flexGrow: 1 }}
               placeholder="Searching..."
             />
-            <Button type="dashed">Add posts</Button>
+            <Button
+              onClick={() => {
+                dispatch(showModal(form));
+              }}
+              type="dashed"
+            >
+              Add posts
+            </Button>
           </Flex>
         )}
         pagination={false}
@@ -109,6 +152,105 @@ const PostsPage = () => {
           onChange={(page) => dispatch(changePage(page))}
         />
       ) : null}
+
+      <Modal
+        title="Category data"
+        maskClosable={false}
+        confirmLoading={isModalLoading}
+        okText={selected === null ? "Add category" : "Save category"}
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={closeModal}
+      >
+        <Form
+          name="user"
+          autoComplete="off"
+          labelCol={{
+            span: 24,
+          }}
+          wrapperCol={{
+            span: 24,
+          }}
+          form={form}
+        >
+          <Upload
+            name="avatar"
+            listType="picture-card"
+            className="avatar-uploader"
+            showUploadList={false}
+            onChange={(e) => dispatch(uploadImage(e.file.originFileObj))}
+          >
+            <div>
+              {imageLoading ? (
+                <LoadingOutlined />
+              ) : imageData ? (
+                <img
+                  src={getCatePostImage(imageData)}
+                  alt="avatar"
+                  style={{
+                    width: "100%",
+                  }}
+                />
+              ) : (
+                <div>
+                  <PlusOutlined />
+                  <div
+                    style={{
+                      marginTop: 8,
+                    }}
+                  >
+                    Upload
+                  </div>
+                </div>
+              )}
+            </div>
+          </Upload>
+          <Form.Item
+            label="Title"
+            name="title"
+            rules={[
+              {
+                required: true,
+                message: "Please fill!",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            label="Description"
+            name="description"
+            rules={[
+              {
+                required: true,
+                message: "Please fill!",
+              },
+            ]}
+          >
+            <Input.TextArea />
+          </Form.Item>
+
+          <Form.Item
+            label="Tags"
+            name="tags"
+            rules={[
+              {
+                required: true,
+                message: "Please fill!",
+              },
+            ]}
+          >
+            <Input.TextArea />
+          </Form.Item>
+
+          <Form.Item label="Select">
+            <Select>
+              <Select.Option value="demo">Demo</Select.Option>
+            </Select>
+          </Form.Item>
+        </Form>
+      </Modal>
     </Fragment>
   );
 };

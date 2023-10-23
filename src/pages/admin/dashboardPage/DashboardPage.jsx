@@ -7,6 +7,7 @@ import { Fragment } from "react";
 import { Card, Col, Image, Row, Spin } from "antd";
 import { getPosts } from "../../../redux/actions/posts";
 import { getUsers } from "../../../redux/actions/users";
+import { getComments } from "../../../redux/actions/comments";
 
 const DashboardPage = () => {
   const dispatch = useDispatch();
@@ -19,18 +20,24 @@ const DashboardPage = () => {
   const { total: totalUsers, loading: loadingUsers } = useSelector(
     (state) => state.users
   );
+  const { total: totalComments, loading: loadingComments } = useSelector(
+    (state) => state.comments
+  );
 
   useEffect(() => {
     dispatch(getCategories());
     dispatch(getUsers());
     dispatch(getPosts());
+    dispatch(getComments());
   }, [dispatch]);
   return (
     <Fragment>
       <Spin
         tip="Loading"
         size="large"
-        spinning={loadingCate && loadingPosts && loadingUsers}
+        spinning={
+          loadingCate && loadingPosts && loadingUsers && loadingComments
+        }
       >
         <Row center="xs" gutter={[24, 24]}>
           <Col className="gutter-row" xs={24} sm={16} md={12} lg={8}>
@@ -134,17 +141,17 @@ const DashboardPage = () => {
                     borderRadius: "10px",
                   }}
                   height={250}
-                  alt="Posts"
+                  alt="comments"
                   src="https://media.sproutsocial.com/uploads/2022/04/Best-times-to-post-2022_BTTP-Social-Media.jpg"
                 />
               }
             >
               <h3 style={{ color: "white" }}>
-                Posts:{" "}
-                {loadingPosts ? (
-                  <Spin spinning={loadingPosts} size="small" />
+                Comments:{" "}
+                {loadingComments ? (
+                  <Spin spinning={loadingComments} size="small" />
                 ) : (
-                  totalPosts
+                  totalComments
                 )}
               </h3>
             </Card>

@@ -7,6 +7,7 @@ import categoryReducer from "../reducers/categories";
 import usersReducer from "../reducers/users";
 import thunk from "redux-thunk";
 import { postsReducer } from "../reducers/posts";
+import { commentsReducer } from "../reducers/comments";
 
 const rootReducer = combineReducers({
   counter: counterReducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   categories: categoryReducer,
   users: usersReducer,
   posts: postsReducer,
+  comments: commentsReducer
 });
 
 export const Store = createStore(rootReducer, applyMiddleware(thunk));

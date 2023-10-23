@@ -5,6 +5,7 @@ export const LIMIT = 10;
 export const LIMIT_CATEGORY = 4;
 export const LIMIT_USERS = 10;
 export const LIMIT_POSTS = 10;
+export const LIMIT_COMMENTS = 4;
 export const BLOGLANGUAGE = "BLOG_LANGUAGE";
 
 export const trueDate = (date) => {
